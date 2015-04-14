@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source lib/core.sh
+
+os() {
+  installPackages() {
+    local packages=("curl" "libssl-dev" "git" "unzip" "make" "gcc")
+    runApt "${packages[@]}"
+  }
+
+  local commands=(info updateApt installPackages cleanApt)
+  run "${commands[@]}"
+}
+
+main() {
+  local commands=(os)
+  run "${commands[@]}"
+  catch
+}
+
+main
